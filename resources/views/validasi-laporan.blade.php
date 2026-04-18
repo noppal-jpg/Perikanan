@@ -625,7 +625,6 @@
 
         <ul class="sidebar-menu">
             <li><a href="{{ route('dashboard') }}"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="{{ route('manajemen.user') }}"><i class="fas fa-users"></i> Manajemen User</a></li>
             <li><a href="{{ route('validasi.laporan') }}" class="active"><i class="fas fa-check-circle"></i> Validasi Laporan</a></li>
             <li><a href="{{ route('laporan.cetak') }}"><i class="fas fa-print"></i> Cetak Laporan</a></li>
             <li><a href="{{ route('statistik') }}"><i class="fas fa-chart-bar"></i> Data Statistik</a></li>
