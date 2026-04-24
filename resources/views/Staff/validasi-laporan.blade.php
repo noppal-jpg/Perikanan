@@ -624,11 +624,11 @@
         </div>
 
         <ul class="sidebar-menu">
-            <li><a href="{{ route('dashboard') }}"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="{{ route('validasi.laporan') }}" class="active"><i class="fas fa-check-circle"></i> Validasi Laporan</a></li>
-            <li><a href="{{ route('laporan.cetak') }}"><i class="fas fa-print"></i> Cetak Laporan</a></li>
-            <li><a href="{{ route('statistik') }}"><i class="fas fa-chart-bar"></i> Data Statistik</a></li>
-            <li><a href="#"><i class="fas fa-bell"></i> Notifikasi</a></li>
+            <li><a href="dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
+            <li><a href="validasi-laporan" class="active"><i class="fas fa-check-circle"></i> Validasi Laporan</a></li>
+            <li><a href="cetak-laporan"><i class="fas fa-print"></i> Cetak Laporan</a></li>
+            <li><a href="statistik"><i class="fas fa-chart-bar"></i> Data Statistik</a></li>
+            <li><a href="notifikasi"><i class="fas fa-bell"></i> Notifikasi</a></li>
         </ul>
 
         <div class="sidebar-logout">

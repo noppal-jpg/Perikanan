@@ -31,8 +31,10 @@
 
         /* sidebar theme */
         #sidenav-main {
-            background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
-            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: linear-gradient(180deg, #0d2640 0%, #1a4d7d 100%) !important;
+            border: none;
+            min-height: 100vh;
+            box-shadow: 2px 0 18px rgba(0, 0, 0, 0.1);
         }
 
         .sidenav-header .navbar-brand {
@@ -41,16 +43,23 @@
             display: flex;
         }
 
-        .sidenav-header .navbar-brand-img {
-            width: 38px;
-            height: 38px;
-            object-fit: contain;
-            filter: brightness(1.2);
+        .sidenav-header .navbar-brand-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d2640;
+            font-size: 1rem;
+            font-weight: 700;
         }
 
         .sidenav-header .font-weight-bold {
             color: #f8fafc;
             letter-spacing: 0.03em;
+            font-size: 1rem;
         }
 
         .navbar-nav {
@@ -69,19 +78,53 @@
             display: flex;
             align-items: center;
             gap: 0.85rem;
-            padding: 0.9rem 1rem;
+            padding: 0.95rem 1rem;
             border-radius: 1rem;
             margin-bottom: 0.35rem;
             color: #e2e8f0;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
         }
 
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
-            background: rgba(96, 165, 250, 0.18);
+            background: rgba(255, 255, 255, 0.18);
             color: #ffffff;
             transform: translateX(1px);
+        }
+
+        .navbar-nav .nav-link i {
+            width: 25px;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        .navbar-nav .nav-link.active i,
+        .navbar-nav .nav-link:hover i {
+            color: #ffffff;
+        }
+
+        .sidebar-logout {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar-logout a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 1rem;
+            color: #cdd6e2;
+            text-decoration: none;
+            border-radius: 1rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .sidebar-logout a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
         }
 
         .navbar-nav .nav-link i {
@@ -161,13 +204,14 @@
     @unless ($hideNav)
         <!-- sidebar initially hidden, will toggle via button -->
         <aside
-            class="sidenav d-none navbar navbar-vertical navbar-expand-xs navbar-dark border-0 border-radius-xl my-3 fixed-left bg-gradient-dark"
+            class="sidenav d-none d-xl-block navbar navbar-vertical navbar-expand-xs navbar-dark border-0 border-radius-xl my-3 fixed-left bg-gradient-dark"
             id="sidenav-main">
             <div class="sidenav-header">
                 <a class="navbar-brand m-0" href="#">
-                    <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/logo-ct.png"
-                        class="navbar-brand-img" alt="main_logo" />
-                    <span class="ms-1 font-weight-bold">SIPETANG</span>
+                    <div class="navbar-brand-box"><i class="fas fa-water"></i></div>
+                    <div>
+                        <span class="ms-1 font-weight-bold">SIPETANG</span>
+                    </div>
                 </a>
             </div>
             <hr class="horizontal dark mt-0" />
@@ -227,14 +271,76 @@
                         <span
                             class="nav-link-text text-white text-xs font-weight-bold text-uppercase ps-3 opacity-6">Akun</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="{{ request()->routeIs('profile') ? 'nav-link active' : 'nav-link' }}"
-                            href="{{ route('profile') }}">
-                            <i class="ni ni-single-02 text-white"></i>
-                            <span class="nav-link-text ms-1 text-white">Manajemen User</span>
-                        </a>
-                    </li>
+                    @if(auth()->check() && strtolower(auth()->user()->role) === 'admin')
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('admin.dashboard') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('admin.dashboard') }}">
+                                <i class="ni ni-tv-2 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Dashboard Admin</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('admin.manajemen.user') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('admin.manajemen.user') }}">
+                                <i class="ni ni-single-02 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Manajemen User</span>
+                            </a>
+                        </li>
+                    @elseif(auth()->check() && strtolower(auth()->user()->role) === 'staff')
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('dashboard') || request()->routeIs('staff.dashboard') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('dashboard') }}">
+                                <i class="ni ni-tv-2 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('validasi.laporan') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('validasi.laporan') }}">
+                                <i class="ni ni-check-bold text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Validasi Laporan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('laporan.cetak') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('laporan.cetak') }}">
+                                <i class="ni ni-bold-down text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Cetak Laporan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('statistik') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('statistik') }}">
+                                <i class="ni ni-chart-bar-32 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Data Statistik</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('notifikasi') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('notifikasi') }}">
+                                <i class="ni ni-bell-55 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Notifikasi</span>
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="{{ request()->routeIs('profile') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('profile') }}">
+                                <i class="ni ni-single-02 text-white"></i>
+                                <span class="nav-link-text ms-1 text-white">Profil Saya</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
+                <div class="sidebar-logout">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
             </div>
         </aside>
     @endunless

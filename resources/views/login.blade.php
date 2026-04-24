@@ -390,13 +390,13 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login.store') }}">
                 @csrf
 
                 <div class="form-group">
-                    <label for="email">Username</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        placeholder="Masukan Username" required value="{{ old('email') }}"
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="Masukan Username" required value="{{ old('username') }}"
                         autofocus>
                 </div>
 
