@@ -632,7 +632,12 @@
         </ul>
 
         <div class="sidebar-logout">
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" style="background: none; border: none; color: white; text-decoration: none; font-size: 14px; cursor: pointer;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
         </div>
     </aside>
 

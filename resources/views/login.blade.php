@@ -374,6 +374,7 @@
         <div class="login-right">
             <div class="form-header">
                 <h2>Selamat Datang</h2>
+                <h2>Silakan masuk untuk melanjutkan</h2>
             </div>
 
             @if ($errors->any())
