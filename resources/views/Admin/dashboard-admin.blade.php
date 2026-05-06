@@ -82,13 +82,18 @@
             gap: 15px;
             padding: 10px;
             border-radius: 6px;
-            transition: all 0.3s;
+            transition: background 0.2s ease, transform 0.1s ease;
             font-size: 14px;
         }
 
         .sidebar-menu a:hover,
         .sidebar-menu a.active {
             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-menu a:active {
+            background: rgba(255, 255, 255, 0.16);
+            transform: scale(0.98);
         }
 
         .sidebar-menu i {
@@ -296,31 +301,7 @@
 </head>
 
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="sidebar-logo-box">
-                <i class="fas fa-water"></i>
-            </div>
-            <div class="sidebar-logo-text">
-                <h3>SIPETANG</h3>
-                <p>HASIL TANGKAP</p>
-            </div>
-        </div>
-
-        <ul class="sidebar-menu">
-            <li><a href="dashboard-admin"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="manajemen-user" class="active"><i class="fas fa-check-circle"></i>Manajemen User</a></li>
-        </ul>
-
-        <div class="sidebar-logout">
-            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                @csrf
-                <button type="submit" style="background: none; border: none; color: white; text-decoration: none; font-size: 14px; cursor: pointer;">
-                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
-                </button>
-            </form>
-        </div>
-    </aside>
+    @include('components.sidebar-menu')
 
     <div class="main-content">
         <div class="header">

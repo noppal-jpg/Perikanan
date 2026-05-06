@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validasi Laporan - SIPETANG</title>
+    <title>Ringkasan Operasional - SIPETANG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -22,95 +22,139 @@
 
         /* Sidebar */
         .sidebar {
-            width: 200px;
-            background: linear-gradient(180deg, #0d2640 0%, #1a4d7d 100%);
+            width: 260px;
+            background: linear-gradient(180deg, #0a3b99 0%, #1d65d0 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 34px 26px;
             display: flex;
             flex-direction: column;
             position: fixed;
             height: 100vh;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 0 36px rgba(0, 0, 0, 0.18);
             overflow-y: auto;
-            z-index: 100;
+            z-index: 20;
         }
 
         .sidebar-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 16px;
+            margin-bottom: 38px;
             font-weight: 700;
         }
 
         .sidebar-logo-box {
             background: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0d2640;
+            overflow: hidden;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .sidebar-logo-image {
+            width: 86%;
+            height: 86%;
+            object-fit: contain;
         }
 
         .sidebar-logo-text h3 {
-            font-size: 14px;
+            font-size: 18px;
             margin: 0;
+            letter-spacing: 0.5px;
         }
 
         .sidebar-logo-text p {
-            font-size: 9px;
-            opacity: 0.7;
-            margin: 0;
+            font-size: 11px;
+            opacity: 0.82;
+            margin: 4px 0 0;
+            line-height: 1.35;
         }
 
         .sidebar-menu {
             flex: 1;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .sidebar-menu li {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .sidebar-menu a {
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 10px;
-            border-radius: 6px;
-            transition: all 0.3s;
-            font-size: 14px;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: 18px;
+            transition: background 0.25s ease, transform 0.15s ease, color 0.25s ease;
+            font-size: 15px;
+            font-weight: 700;
         }
 
-        .sidebar-menu a:hover,
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
         .sidebar-menu a.active {
-            background: rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            color: #0a3b99;
+            box-shadow: 0 14px 30px rgba(9, 45, 112, 0.14);
+        }
+
+        .sidebar-menu a.active i {
+            color: #0a3b99;
+        }
+
+        .sidebar-menu a:active {
+            transform: scale(0.98);
         }
 
         .sidebar-menu i {
             width: 20px;
             text-align: center;
+            font-size: 18px;
         }
 
         .sidebar-logout {
             margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        .sidebar-logout a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
+        .sidebar-logout-button {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 14px 18px;
+            width: 100%;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.25s ease;
         }
 
-        /* Main Content Area */
+        .sidebar-logout-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-logout-button i {
+            font-size: 18px;
+        }
+
         .main-content {
-            margin-left: 200px;
+            margin-left: 260px;
             flex: 1;
             padding: 30px;
         }
@@ -227,6 +271,281 @@
         .bg-green { background: #e8f5e9; color: #2e7d32; }
         .bg-orange { background: #fff3e0; color: #ef6c00; }
 
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+        }
+
+        .stat-card-large {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        .stat-card-large h4 {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .stat-card-large .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0d2640;
+        }
+
+        .stat-card-dark {
+            background: linear-gradient(135deg, #0d2640 0%, #1a4d7d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-card-dark h4 {
+            font-size: 11px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .stat-card-dark .number {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .real-time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            color: #10b981;
+            margin-top: 10px;
+        }
+
+        .real-time-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .small-stat {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .small-stat label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .small-stat .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d2640;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            width: 88%;
+        }
+
+        .anomaly-alert {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 4px solid #ef4444;
+        }
+
+        .anomaly-alert label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .anomaly-alert .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .sidebar-right {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            height: fit-content;
+        }
+
+        .sidebar-right-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-right-header h3 {
+            font-size: 14px;
+            color: #0d2640;
+            font-weight: 700;
+        }
+
+        .sidebar-right-header a {
+            color: #2563eb;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .activity-content {
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .activity-name {
+            font-weight: 600;
+            color: #0d2640;
+        }
+
+        .activity-location {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .activity-status {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .activity-status.verified {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .activity-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .activity-time {
+            color: #888;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .content-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .content-header-left h2 {
+            font-size: 24px;
+            color: #0d2640;
+            margin-bottom: 5px;
+        }
+
+        .content-header-left p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .content-header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .date-selector {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-input {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
         .table-container {
             background: white;
             border-radius: 12px;
@@ -296,34 +615,7 @@
 </head>
 
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="sidebar-logo-box">
-                <i class="fas fa-water"></i>
-            </div>
-            <div class="sidebar-logo-text">
-                <h3>SIPETANG</h3>
-                <p>HASIL TANGKAP</p>
-            </div>
-        </div>
-
-        <ul class="sidebar-menu">
-            <li><a href="dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="validasi-laporan" class="active"><i class="fas fa-check-circle"></i> Validasi Laporan</a></li>
-            <li><a href="cetak-laporan"><i class="fas fa-print"></i> Cetak Laporan</a></li>
-            <li><a href="statistik"><i class="fas fa-chart-bar"></i> Data Statistik</a></li>
-            <li><a href="notifikasi"><i class="fas fa-bell"></i> Notifikasi</a></li>
-        </ul>
-
-        <div class="sidebar-logout">
-            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                @csrf
-                <button type="submit" style="background: none; border: none; color: white; text-decoration: none; font-size: 14px; cursor: pointer;">
-                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
-                </button>
-            </form>
-        </div>
-    </aside>
+    @include('components.sidebar-menu')
 
     <div class="main-content">
         <div class="header">
@@ -339,95 +631,101 @@
             </div>
         </div>
 
-        <div class="content-header">
-            <h2>Validasi Laporan</h2>
-            <p>Verifikasi data hasil tangkapan dari TPI wilayah Subang.</p>
-        </div>
-
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-info">
-                    <h4>Menunggu</h4>
-                    <span>24</span>
-                </div>
-                <div class="stat-icon bg-orange">
-                    <i class="fas fa-clock"></i>
-                </div>
+        <div class="content-header-top">
+            <div class="content-header-left">
+                <h2>Ringkasan Operasional</h2>
+                <p>Selamat datang kembali di sistem informasi hasil tangkap</p>
             </div>
-            <div class="stat-card">
-                <div class="stat-info">
-                    <h4>Tervalidasi</h4>
-                    <span>142</span>
+            <div class="content-header-right">
+                <div class="date-selector">
+                    <i class="fas fa-calendar"></i>
+                    <span>Mei 2026</span>
                 </div>
-                <div class="stat-icon bg-green">
-                    <i class="fas fa-check-double"></i>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-info">
-                    <h4>Total Volume</h4>
-                    <span>8.4 Ton</span>
-                </div>
-                <div class="stat-icon bg-blue">
-                    <i class="fas fa-anchor"></i>
-                </div>
+                <button class="btn-input"><i class="fas fa-arrow-up"></i> Input Laporan</button>
             </div>
         </div>
 
-        <div class="table-container">
-            <div class="table-header">
-                <h3>Antrean Laporan</h3>
-                <button class="btn-action btn-detail" style="padding: 10px 20px;">
-                    <i class="fas fa-file-export"></i> Ekspor Data
-                </button>
+        <div class="dashboard-container">
+            <div>
+                <div class="stats-grid">
+                    <div class="stat-card-large">
+                        <h4>TOTAL DATA USER</h4>
+                        <div class="number">30</div>
+                    </div>
+                    <div class="stat-card-dark">
+                        <h4>DATA PRODUKSI (BULAN)</h4>
+                        <div class="number">10 (ton)</div>
+                        <div class="real-time-badge">REAL-TIME MONITOR</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="small-stat">
+                        <label>Laporan Masuk</label>
+                        <div class="value">482</div>
+                    </div>
+                    <div class="small-stat">
+                        <label>Validasi Tertunda</label>
+                        <div class="value">12</div>
+                    </div>
+                </div>
+
+                <div class="anomaly-alert">
+                    <label>Data Statistik Terkini</label>
+                    <div style="margin-top: 10px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span style="font-size: 12px; color: #0d2640;">Validasi Berhasil</span>
+                            <span style="font-size: 12px; font-weight: 700; color: #0d2640;">88%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 12px; color: #666;">Anomali Terdeteksi</span>
+                            <span style="font-size: 18px; font-weight: 700; color: #ef4444;">04</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>TPI / Lokasi</th>
-                        <th>Komoditas</th>
-                        <th>Volume</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>24 Okt 2025</td>
-                        <td><strong>TPI Mayangan</strong><br><small>Subang Utara</small></td>
-                        <td>Tongkol</td>
-                        <td>1,250 KG</td>
-                        <td><span class="badge badge-pending">TERTUNDA</span></td>
-                        <td>
-                            <button class="btn-action btn-check"><i class="fas fa-check"></i></button>
-                            <button class="btn-action btn-detail"><i class="fas fa-eye"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>24 Okt 2025</td>
-                        <td><strong>TPI Blanakan</strong><br><small>Subang Barat</small></td>
-                        <td>Kembung</td>
-                        <td>840 KG</td>
-                        <td><span class="badge badge-pending">TERTUNDA</span></td>
-                        <td>
-                            <button class="btn-action btn-check"><i class="fas fa-check"></i></button>
-                            <button class="btn-action btn-detail"><i class="fas fa-eye"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>23 Okt 2025</td>
-                        <td><strong>TPI Ciasem</strong><br><small>Subang Timur</small></td>
-                        <td>Layur</td>
-                        <td>2,180 KG</td>
-                        <td><span class="badge badge-success">TERIMA</span></td>
-                        <td>
-                            <button class="btn-action btn-detail"><i class="fas fa-info-circle"></i> Detail</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="sidebar-right">
+                <div class="sidebar-right-header">
+                    <h3>Aktivitas Terbaru</h3>
+                    <a href="#">Lihat Semua</a>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-avatar" style="background: #e0f2fe; color: #0369a1;">AD</div>
+                    <div class="activity-content">
+                        <div class="activity-name">Andi Saputra</div>
+                        <div class="activity-location">Blanakan</div>
+                        <span class="activity-status verified">TERVALIDASI</span>
+                        <div class="activity-time">10 Menit yang lalu</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-avatar" style="background: #f0fdf4; color: #166534;">RM</div>
+                    <div class="activity-content">
+                        <div class="activity-name">Rina Mardiana</div>
+                        <div class="activity-location">Pondok Bali</div>
+                        <span class="activity-status pending">PENDING</span>
+                        <div class="activity-time">25 Menit yang lalu</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-avatar" style="background: #fef3c7; color: #b45309;">BK</div>
+                    <div class="activity-content">
+                        <div class="activity-name">Budi Kusuma</div>
+                        <div class="activity-location">Mayangan</div>
+                        <span class="activity-status verified">TERVALIDASI</span>
+                        <div class="activity-time">1 Jan yang lalu</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

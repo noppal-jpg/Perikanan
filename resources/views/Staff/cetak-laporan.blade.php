@@ -22,92 +22,139 @@
         }
 
         .sidebar {
-            width: 200px;
-            background: linear-gradient(180deg, #0d2640 0%, #1a4d7d 100%);
-            color: #fff;
-            padding: 30px 20px;
+            width: 260px;
+            background: linear-gradient(180deg, #0a3b99 0%, #1d65d0 100%);
+            color: white;
+            padding: 34px 26px;
             display: flex;
             flex-direction: column;
             position: fixed;
             height: 100vh;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 0 36px rgba(0, 0, 0, 0.18);
+            overflow-y: auto;
+            z-index: 20;
         }
 
         .sidebar-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 16px;
+            margin-bottom: 38px;
             font-weight: 700;
         }
 
         .sidebar-logo-box {
-            width: 40px;
-            height: 40px;
-            background: #fff;
-            border-radius: 6px;
+            background: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0d2640;
-            font-size: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .sidebar-logo-image {
+            width: 86%;
+            height: 86%;
+            object-fit: contain;
         }
 
         .sidebar-logo-text h3 {
-            font-size: 14px;
+            font-size: 18px;
             margin: 0;
+            letter-spacing: 0.5px;
         }
 
         .sidebar-logo-text p {
-            font-size: 9px;
-            opacity: 0.7;
-            margin: 0;
+            font-size: 11px;
+            opacity: 0.82;
+            margin: 4px 0 0;
+            line-height: 1.35;
         }
 
         .sidebar-menu {
             flex: 1;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .sidebar-menu li {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .sidebar-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            transition: all 0.3s;
-            font-size: 14px;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: 18px;
+            transition: background 0.25s ease, transform 0.15s ease, color 0.25s ease;
+            font-size: 15px;
+            font-weight: 700;
         }
 
-        .sidebar-menu a:hover,
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
         .sidebar-menu a.active {
-            background: rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            color: #0a3b99;
+            box-shadow: 0 14px 30px rgba(9, 45, 112, 0.14);
+        }
+
+        .sidebar-menu a.active i {
+            color: #0a3b99;
+        }
+
+        .sidebar-menu a:active {
+            transform: scale(0.98);
         }
 
         .sidebar-menu i {
             width: 20px;
             text-align: center;
+            font-size: 18px;
         }
 
         .sidebar-logout {
             margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        .sidebar-logout a {
-            color: #cdd6e2;
-            text-decoration: none;
+        .sidebar-logout-button {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 14px 18px;
+            width: 100%;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+
+        .sidebar-logout-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-logout-button i {
+            font-size: 18px;
         }
 
         .main-content {
-            margin-left: 200px;
+            margin-left: 260px;
             flex: 1;
             padding: 30px;
         }
@@ -629,32 +676,7 @@
 </head>
 
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="sidebar-logo-box">
-                <i class="fas fa-water"></i>
-            </div>
-            <div class="sidebar-logo-text">
-                <h3>SIPETANG</h3>
-                <p>HASIL TANGKAP</p>
-            </div>
-        </div>
-
-        <ul class="sidebar-menu">
-            <li><a href="dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="validasi-laporan" class="active"><i class="fas fa-check-circle"></i> Validasi Laporan</a></li>
-            <li><a href="cetak-laporan"><i class="fas fa-print"></i> Cetak Laporan</a></li>
-            <li><a href="statistik"><i class="fas fa-chart-bar"></i> Data Statistik</a></li>
-            <li><a href="notifikasi"><i class="fas fa-bell"></i> Notifikasi</a></li>
-        </ul>
-
-        <div class="sidebar-logout">
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-    </aside>
+    @include('components.sidebar-menu')
 
     <main class="main-content">
         <div class="header">

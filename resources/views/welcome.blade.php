@@ -58,8 +58,8 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(26, 77, 125, 0.8) 0%, rgba(26, 127, 187, 0.8) 100%), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23001a33" width="1200" height="600"/></svg>');
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%),
+                        url('/images/Container.png') no-repeat;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;

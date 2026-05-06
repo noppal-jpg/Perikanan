@@ -16,48 +16,55 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
+            background: linear-gradient(180deg, #04255f 0%, #0b3b80 70%, #0c477e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
         }
 
-        /* Login Container */
         .login-wrapper {
             display: flex;
-            min-height: 100vh;
+            width: min(1120px, 100%);
+            min-height: 620px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 40px 120px rgba(6, 31, 91, 0.25);
         }
 
-        /* Left Side - Dark Background */
         .login-left {
-            background: linear-gradient(135deg, #0d2640 0%, #1a4d7d 100%);
+            background: linear-gradient(135deg, #0d3a71 0%, #0f4d8d 100%);
             color: white;
-            padding: 60px 50px;
+            padding: 60px 55px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            width: 50%;
+            justify-content: space-between;
+            width: 45%;
             position: relative;
             overflow: hidden;
         }
 
-        .login-left::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-
+        .login-left::before,
         .login-left::after {
             content: '';
             position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .login-left::before {
+            top: -40%;
+            right: -35%;
+            width: 420px;
+            height: 420px;
+        }
+
+        .login-left::after {
             bottom: -30%;
             left: -20%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
+            width: 360px;
+            height: 360px;
         }
 
         .login-left-content {
@@ -66,107 +73,138 @@
         }
 
         .logo-section {
-            margin-bottom: 50px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
         .logo-box {
             background: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
+            width: 70px;
+            height: 70px;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            flex-shrink: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
         }
 
-        .logo-box i {
-            color: #0d2640;
-            font-size: 28px;
+        .sipetang-logo {
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
         }
 
         .logo-text h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .logo-text p {
             font-size: 11px;
-            opacity: 0.8;
+            opacity: 0.85;
             letter-spacing: 1px;
             text-transform: uppercase;
+            margin-top: 2px;
         }
 
         .login-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            line-height: 1.2;
+            font-size: 74px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            line-height: 0.95;
+            letter-spacing: -1px;
         }
 
         .login-description {
-            font-size: 15px;
-            line-height: 1.6;
-            opacity: 0.9;
-            max-width: 300px;
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0.92;
+            max-width: 360px;
+            margin-bottom: 12px;
         }
 
-        /* Right Side - Form */
+        .login-left .login-footer {
+            position: static;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
         .login-right {
-            background: white;
+            width: 55%;
             padding: 60px 50px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            width: 50%;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            background: #f8fafc;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 540px;
+            background: white;
+            border-radius: 28px;
+            padding: 50px 44px;
+            box-shadow: 0 30px 80px rgba(15, 44, 89, 0.12);
         }
 
         .form-header h2 {
             font-size: 32px;
-            font-weight: 600;
-            color: #1a4d7d;
-            margin-bottom: 30px;
+            font-weight: 700;
+            color: #17274f;
+            margin-bottom: 12px;
         }
 
-        /* Form Inputs */
+        .form-header p {
+            font-size: 15px;
+            color: #637392;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .form-group label {
             display: block;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            color: #555;
+            color: #5b647d;
             margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: all 0.3s;
-            background: #f5f5f5;
+            padding: 14px 16px;
+            border: 1px solid #dde4ef;
+            border-radius: 14px;
+            font-size: 15px;
+            transition: all 0.25s ease;
+            background: #f7f9ff;
+            color: #2d3f5f;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #1a7fbb;
+            border-color: #c6d8f4;
             background: white;
-            box-shadow: 0 0 0 3px rgba(26, 127, 187, 0.1);
+            box-shadow: 0 0 0 4px rgba(20, 79, 167, 0.08);
         }
 
         .form-group input::placeholder {
-            color: #999;
+            color: #9aa3b4;
         }
 
-        /* Password Group */
         .password-group {
             position: relative;
             display: flex;
@@ -174,74 +212,70 @@
         }
 
         .password-group input {
-            padding-right: 40px;
+            padding-right: 44px;
         }
 
         .password-toggle {
             position: absolute;
-            right: 12px;
+            right: 14px;
             cursor: pointer;
             font-size: 18px;
-            color: #999;
+            color: #94a3bb;
             transition: color 0.3s;
         }
 
         .password-toggle:hover {
-            color: #1a7fbb;
+            color: #1a4d8d;
         }
 
-        /* Forgot Password Link */
         .forgot-password {
             position: absolute;
             right: 0;
-            top: 0;
-            font-size: 12px;
-            color: #1a7fbb;
+            top: 2px;
+            font-size: 13px;
+            color: #0f4d8d;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 700;
+            transition: color 0.25s ease;
         }
 
         .forgot-password:hover {
-            color: #0d2640;
+            color: #0b3a69;
         }
 
-        /* Remember Me */
         .remember-me {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            position: relative;
+            margin-bottom: 28px;
         }
 
         .remember-me input[type="checkbox"] {
             width: auto;
-            margin-right: 8px;
+            margin-right: 10px;
             cursor: pointer;
-            accent-color: #1a7fbb;
+            accent-color: #f16301;
         }
 
         .remember-me label {
             margin: 0;
-            text-transform: none;
             font-size: 14px;
+            color: #4d556d;
             cursor: pointer;
         }
 
-        /* Login Button */
         .btn-login {
             width: 100%;
-            padding: 13px;
-            background: #0d2640;
+            padding: 14px 18px;
+            background: #f16301;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 14px;
             font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,97 +283,92 @@
         }
 
         .btn-login:hover {
-            background: #1a4d7d;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(13, 38, 64, 0.3);
+            background: #d95401;
+            transform: translateY(-1px);
+            box-shadow: 0 14px 35px rgba(241, 99, 1, 0.18);
         }
 
-        /* Messages */
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
+        .error-message,
+        .success-message {
+            border-radius: 14px;
+            margin-bottom: 22px;
             font-size: 13px;
-            border-left: 4px solid #c33;
+            line-height: 1.6;
             animation: slideDown 0.3s ease-out;
+            padding: 16px 18px;
+        }
+
+        .error-message {
+            background: #fff1f0;
+            color: #b32318;
+            border-left: 4px solid #dd1f1f;
         }
 
         .success-message {
-            background: #efd;
-            color: #3c3;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            border-left: 4px solid #3c3;
-            animation: slideDown 0.3s ease-out;
+            background: #effaf2;
+            color: #1f5d2f;
+            border-left: 4px solid #2f8b4c;
         }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Footer */
-        .login-footer {
-            position: absolute;
-            bottom: 20px;
-            right: 50px;
-            font-size: 12px;
-            color: #999;
-            text-align: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 980px) {
             .login-wrapper {
                 flex-direction: column;
             }
 
-            .login-left {
+            .login-left,
+            .login-right {
                 width: 100%;
-                padding: 40px 20px;
-                justify-content: flex-start;
-                padding-top: 40px;
+            }
+
+            .login-left {
+                padding: 40px 30px;
             }
 
             .login-right {
-                width: 100%;
-                padding: 40px 20px;
-                box-shadow: none;
-                border-top: 1px solid #e0e0e0;
+                padding: 30px 24px;
+            }
+
+            .login-card {
+                padding: 32px 28px;
             }
 
             .login-title {
-                font-size: 32px;
-                margin-bottom: 20px;
+                font-size: 54px;
+                margin-bottom: 16px;
             }
 
-            .login-description {
-                font-size: 13px;
-                margin-bottom: 30px;
+            .form-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .login-left {
+                padding: 28px 18px;
+            }
+
+            .login-title {
+                font-size: 42px;
+            }
+
+            .login-description,
+            .logo-text h1 {
+                max-width: 100%;
             }
 
             .form-header h2 {
                 font-size: 24px;
-            }
-
-            .logo-section {
-                margin-bottom: 30px;
-            }
-
-            .login-footer {
-                position: static;
-                margin-top: 20px;
             }
         }
     </style>
@@ -352,16 +381,16 @@
             <div class="login-left-content">
                 <div class="logo-section">
                     <div class="logo-box">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <div class="logo-text">
-                        <h1>SIPETANG</h1>
-                        <p>Sistem Informasi Pencatatan Hasil Tangkap</p>
-                    </div>
+                    <img src="{{ asset('images/sipetang.jpg.png') }}" alt="SIPETANG Logo" class="sipetang-logo">
+                </div>
+                <div class="logo-text">
+                    <h1>SIPETANG</h1>
+                    <p>Sistem Informasi Pencatatan Hasil Tangkap</p>
+                </div>
                 </div>
 
-                <h2 class="login-title">LOGIN</h2>
-                <p class="login-description">Lingkungan terukurasi untuk mengelola data maritim dan aset perikanan dengan presisi dan otoritas.</p>
+                <h2 class="login-title">MASUK</h2>
+                <p class="login-description">Lingkungan terukur untuk mengelola data maritim dan aset perikanan dengan presisi dan otoritas.</p>
             </div>
             
             <div class="login-footer">
@@ -372,12 +401,13 @@
 
         <!-- Right Side -->
         <div class="login-right">
-            <div class="form-header">
-                <h2>Selamat Datang</h2>
-                <h2>Silakan masuk untuk melanjutkan</h2>
-            </div>
+            <div class="login-card">
+                <div class="form-header">
+                    <h2>Selamat Datang</h2>
+                    <p>Masuk untuk mengelola data maritim dan aset perikanan secara presisi.</p>
+                </div>
 
-            @if ($errors->any())
+                @if ($errors->any())
                 <div class="error-message">
                     <strong>Login gagal!</strong>
                     @foreach ($errors->all() as $error)
@@ -397,7 +427,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username"
-                        placeholder="Masukan Username" required value="{{ old('username') }}"
+                        placeholder="Masukan Nama" required value="{{ old('username') }}"
                         autofocus>
                 </div>
 
@@ -420,9 +450,10 @@
                 </div>
 
                 <button type="submit" class="btn-login">
-                    LOGIN <i class="fas fa-arrow-right"></i>
+                    MASUK <i class="fas fa-arrow-right"></i>
                 </button>
             </form>
+            </div>
         </div>
     </div>
 

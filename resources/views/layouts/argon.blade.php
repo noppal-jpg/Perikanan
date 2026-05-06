@@ -208,9 +208,12 @@
             id="sidenav-main">
             <div class="sidenav-header">
                 <a class="navbar-brand m-0" href="#">
-                    <div class="navbar-brand-box"><i class="fas fa-water"></i></div>
+                    <div class="navbar-brand-box" style="background: white; border-radius: 18px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ asset('images/sipetang-logo.svg') }}" alt="SIPETANG" style="max-width: 38px; max-height: 38px; object-fit: contain;" />
+                    </div>
                     <div>
                         <span class="ms-1 font-weight-bold">SIPETANG</span>
+                        <p style="margin: 0; font-size: 10px; opacity: .7;">Sistem Informasi Pencatatan Hasil Tangkap</p>
                     </div>
                 </a>
             </div>
@@ -291,33 +294,33 @@
                             <a class="{{ request()->routeIs('dashboard') || request()->routeIs('staff.dashboard') ? 'nav-link active' : 'nav-link' }}"
                                 href="{{ route('dashboard') }}">
                                 <i class="ni ni-tv-2 text-white"></i>
-                                <span class="nav-link-text ms-1 text-white">Dashboard</span>
+                                <span class="nav-link-text ms-1 text-white">Beranda</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="{{ request()->routeIs('validasi.laporan') ? 'nav-link active' : 'nav-link' }}"
-                                href="{{ route('validasi.laporan') }}">
+                            <a class="{{ request()->routeIs('staff.validasi') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('staff.validasi') }}">
                                 <i class="ni ni-check-bold text-white"></i>
                                 <span class="nav-link-text ms-1 text-white">Validasi Laporan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="{{ request()->routeIs('laporan.cetak') ? 'nav-link active' : 'nav-link' }}"
-                                href="{{ route('laporan.cetak') }}">
+                            <a class="{{ request()->routeIs('staff.cetak') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('staff.cetak') }}">
                                 <i class="ni ni-bold-down text-white"></i>
                                 <span class="nav-link-text ms-1 text-white">Cetak Laporan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="{{ request()->routeIs('statistik') ? 'nav-link active' : 'nav-link' }}"
-                                href="{{ route('statistik') }}">
+                            <a class="{{ request()->routeIs('staff.statistik') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('staff.statistik') }}">
                                 <i class="ni ni-chart-bar-32 text-white"></i>
                                 <span class="nav-link-text ms-1 text-white">Data Statistik</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="{{ request()->routeIs('notifikasi') ? 'nav-link active' : 'nav-link' }}"
-                                href="{{ route('notifikasi') }}">
+                            <a class="{{ request()->routeIs('staff.notifikasi') ? 'nav-link active' : 'nav-link' }}"
+                                href="{{ route('staff.notifikasi') }}">
                                 <i class="ni ni-bell-55 text-white"></i>
                                 <span class="nav-link-text ms-1 text-white">Notifikasi</span>
                             </a>

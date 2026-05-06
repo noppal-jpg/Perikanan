@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -27,7 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('staff')->group(function () {
         
         Route::get('/dashboard', function () {
-            abort_if(strtolower(auth()->user()->role) !== 'staff', 403);
+            $role = strtolower(auth()->user()->role);
+            abort_unless(in_array($role, ['staff', 'jururekap']), 403);
             return view('Staff.dashboard');
         })->name('staff.dashboard');
 
@@ -73,12 +75,10 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('admin.manajemen.user');
     })->name('manajemen.user');
 
-    Route::get('/admin/manajemen-user', function () {
-        abort_if(strtolower(auth()->user()->role) !== 'admin', 403);
-        return view('Admin.manajemen-user', [
-            'users' => User::all(),
-        ]);
-    })->name('admin.manajemen.user');
+    Route::get('/admin/manajemen-user', [UserController::class, 'index'])
+        ->name('admin.manajemen.user');
+
+    Route::post('/admin/user/store', [UserController::class, 'store'])->name('admin.user.store');
 });
 
 // Guest Routes
